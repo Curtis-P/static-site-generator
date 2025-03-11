@@ -1,0 +1,22 @@
+import unittest
+from main import extract_title
+
+class TestTitleExtractor(unittest.testcase):
+    def test_just_title(self):
+        md = """
+        # This is a H1 Header
+        """
+        e_result = extract_title(md)
+        self.assertEqual(e_result, "This is a H1 Header")
+    def test_just_title_extra_space(self):
+        md = """
+        # This is a H1 Header     
+        """
+        e_result = extract_title(md)
+        self.assertEqual(e_result, "This is a H1 Header")
+    def test_wrong_header(self):
+        md = """
+        ## This is a H2 Header
+        """
+        self.assertRaises(Exception):
+            e_result = extract_title(md)

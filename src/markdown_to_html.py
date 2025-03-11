@@ -60,7 +60,13 @@ def create_list_item_node(block):
     list_children = []
     lines = block.split("\n")
     for line in lines:
-        list_children.append(LeafNode("li", line[2:]))
+        if line.startswith("- "):
+            content = line[2:]
+        else:
+            content = line[3:]
+        text_nodes = text_to_textnodes(content)
+        html_nodes = [text_node_to_html_node(node) for node in text_nodes]
+        list_children.append(ParentNode("li", html_nodes))
     return list_children
 
 def clean_quote_block(block):

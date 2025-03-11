@@ -27,6 +27,12 @@ class TestNodeSplitter(unittest.TestCase):
         text_type = TextType.ITALIC
         self.assertEqual(split_nodes_delimiter(old_nodes, delimiter, text_type), [TextNode("Just a ", TextType.TEXT), TextNode("plain", TextType.ITALIC), TextNode(" text node", TextType.TEXT)])
     
+    def test_underscore_italic_delimiter(self):
+        old_nodes = [TextNode("Just a _plain _ text node", TextType.TEXT)]
+        delimiter = "_"
+        text_type = TextType.ITALIC
+        self.assertEqual(split_nodes_delimiter(old_nodes, delimiter, text_type), [TextNode("Just a ", TextType.TEXT), TextNode("plain ", TextType.ITALIC), TextNode(" text node", TextType.TEXT)])
+    
     def test_invalid_delimiter_count(self):
         old_nodes = [TextNode("Just a *plain text node", TextType.TEXT)]
         delimiter = "*"

@@ -89,5 +89,5 @@ the **same** even with inline stuff
         html = node.to_html()
         self.assertEqual(
             html,
-            "<div><ol><li> Unordered list item 1</li><li> Unordered list item 2</li></ol></div>",
+            "<div><ol><li>Unordered list item 1</li><li>Unordered list item 2</li></ol></div>",
         )
