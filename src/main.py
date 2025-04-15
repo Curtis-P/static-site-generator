@@ -5,13 +5,13 @@ import os
 from markdown_to_html import markdown_to_html_node
 
 def main():
-    if len(sys.argv > 1):
+    if len(sys.argv) > 1:
         basepath = sys.argv[1]
     else:
         basepath = "/"
-    clear_dir("public")
-    copy_dir("static", "public")
-    generate_pages_recursively('content', 'template.html', 'public', basepath)
+    clear_dir("docs")
+    copy_dir("static", "docs")
+    generate_pages_recursively('content', 'template.html', 'docs', basepath)
 
 
 def clear_dir(dest_dir):
